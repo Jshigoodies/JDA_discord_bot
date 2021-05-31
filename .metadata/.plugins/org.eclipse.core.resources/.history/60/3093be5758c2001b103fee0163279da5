@@ -1,0 +1,12 @@
+package jshi.Jason.Minecraft_BOT;
+
+import net.dv8tion.jda.api.events.ReadyEvent;
+
+
+public class Commands{
+	
+	public void onReady(ReadyEvent event)
+	{
+		
+	}
+}
