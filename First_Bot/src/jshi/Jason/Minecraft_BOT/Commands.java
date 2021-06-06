@@ -26,6 +26,14 @@ public class Commands extends ListenerAdapter{
 		if(msg.getContentRaw().equals("!kill me"))
 		{
 			channel.sendMessage("k").queue();
+			int year = channel.getTimeCreated().getYear();
+			int day = channel.getTimeCreated().getDayOfYear();
+			channel.sendMessage("This channel was created in year: " + year + " day: " + day).queue();
+		}
+		
+		if(msg.getContentRaw().equals("fuck"))
+		{
+			msg.delete().queue();
 		}
 			
 	}
