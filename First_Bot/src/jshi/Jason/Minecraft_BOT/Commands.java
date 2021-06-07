@@ -1,5 +1,8 @@
 package jshi.Jason.Minecraft_BOT;
 
+import java.awt.Color;
+
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Invite.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
@@ -34,6 +37,26 @@ public class Commands extends ListenerAdapter{
 		if(msg.getContentRaw().equals("fuck"))
 		{
 			msg.delete().queue();
+		}
+		
+		if(msg.getContentRaw().equals("!embed"))
+		{
+			EmbedBuilder info = new EmbedBuilder();
+			info.setTitle("Jshi", "https://images2.alphacoders.com/836/thumb-1920-836180.png");
+			info.setDescription("Description");
+			info.setColor(Color.BLUE);
+			info.setImage("https://images6.alphacoders.com/836/thumb-1920-836183.png");
+			info.setThumbnail("https://images3.alphacoders.com/836/thumb-1920-836184.png");
+			info.addBlankField(true);
+			info.addBlankField(true);
+			info.addBlankField(true);
+			info.addBlankField(true);
+			info.addField("name", "box", true);
+			info.setFooter("text", event.getMember().getUser().getAvatarUrl());
+			
+			event.getChannel().sendTyping().queue();
+			event.getChannel().sendMessage(info.build()).queue();
+			info.clear();
 		}
 			
 	}
