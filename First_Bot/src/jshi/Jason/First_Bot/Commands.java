@@ -1,4 +1,4 @@
-package jshi.Jason.Minecraft_BOT;
+package jshi.Jason.First_Bot;
 
 import java.awt.Color;
 
