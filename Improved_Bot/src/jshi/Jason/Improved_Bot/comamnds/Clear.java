@@ -32,7 +32,7 @@ public class Clear implements Command{
 				List<Message> messages = message.getChannel().getHistory().retrievePast(Integer.parseInt(args[1])).complete();
 				for(int i = 0; i < messages.size(); i++)
 				{
-					messages.get(i).delete().queue();
+					messages.get(i).delete().submit();
 				}
 			}
 			catch(Exception e)
