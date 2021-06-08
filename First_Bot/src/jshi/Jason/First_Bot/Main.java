@@ -26,7 +26,6 @@ public class Main /*implements EventListener*/{
 		
 		JDABuilder building = JDABuilder.createDefault(token);
 		building.addEventListeners(new Commands());
-		
 		jda = building.build();
 		//done building
 		

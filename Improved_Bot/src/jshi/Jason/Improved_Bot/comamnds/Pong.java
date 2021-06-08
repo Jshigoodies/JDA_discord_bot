@@ -4,17 +4,18 @@ import net.dv8tion.jda.api.entities.Message;
 
 public class Pong implements Command{
 	
-	String name;
+	private String name;
 	
 	public Pong(){
 		name = "ping";
 	}
+	@Override
 	public String getName(){
 		return name;
 	}
 	
-	
-	public void run(Message message){ //executes here
+	@Override
+	public void run(Message message, String[] args){ //executes here
 		message.getChannel().sendMessage("pong!").queue();
 	}
 

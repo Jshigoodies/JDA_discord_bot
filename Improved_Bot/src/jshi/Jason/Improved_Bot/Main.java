@@ -2,13 +2,14 @@ package jshi.Jason.Improved_Bot;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
 import java.util.Scanner;
 import javax.security.auth.login.LoginException;
 
+import jshi.Jason.Improved_Bot.comamnds.Clear;
 import jshi.Jason.Improved_Bot.comamnds.Command;
 import jshi.Jason.Improved_Bot.comamnds.CommandHelper;
 import jshi.Jason.Improved_Bot.comamnds.Pong;
+import jshi.Jason.Improved_Bot.comamnds.Stop;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -32,7 +33,6 @@ public class Main extends ListenerAdapter{
 		Scanner input = new Scanner(f);
 		
 		String token = input.nextLine();
-		
 		JDABuilder building = JDABuilder.createDefault(token);
 		building.addEventListeners(new Main());
 		jda = building.build();
@@ -40,11 +40,15 @@ public class Main extends ListenerAdapter{
 		
 		jda.getPresence().setStatus(OnlineStatus.DO_NOT_DISTURB);
 		jda.getPresence().setActivity(Activity.playing("ANIME ANIME ANIME"));
+		
+		input.close();
 	}
 	
 	public void loadCommands()
 	{
 		cmdhelp.registerCommand(new Pong());
+		cmdhelp.registerCommand(new Stop());
+		cmdhelp.registerCommand(new Clear());
 	}
 	
 	// Events
@@ -60,20 +64,32 @@ public class Main extends ListenerAdapter{
 	{
 		User author = event.getAuthor();
 		Message message = event.getMessage();
-		String messageString = message.getContentRaw();
-		String msg = message.getContentDisplay(); // I like this layout
+		String messageString = message.getContentRaw(); //whole string message if I ever need it
+		String[] args = messageString.split(" ");
+		
+		
+		/*
+		for(int i = 0; i <args.length; i++)
+		{
+			System.out.println(args[i]);
+		}
+		*/
 		
 		if(author.isBot())
 		{
 			return;
 		}
-		if(!(messageString.charAt(0) == '~'))
+		if(!(messageString.substring(0, prefix.length()).equals(prefix)))
 		{
 			return;
 		}
-		
-		Command cmd = cmdhelp.getCommand(messageString.substring(prefix.length()));
-		cmd.run(message);
+		Command cmd = cmdhelp.getCommand(args[0].toLowerCase().substring(prefix.length()));
+		if(cmd == null)
+		{
+			message.getChannel().sendMessage("??????").queue();
+			return;
+		}
+		cmd.run(message, args);
 		
 	}
 }
