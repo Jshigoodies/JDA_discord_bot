@@ -15,4 +15,9 @@ public class CommandHelper {
 	{
 		return commands.get(command_name);
 	}
+	
+	public Map<String, Command> getMap()
+	{
+		return commands;
+	}
 }

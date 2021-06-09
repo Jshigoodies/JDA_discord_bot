@@ -2,12 +2,14 @@ package jshi.Jason.Improved_Bot;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Scanner;
 import javax.security.auth.login.LoginException;
 
 import jshi.Jason.Improved_Bot.comamnds.Clear;
 import jshi.Jason.Improved_Bot.comamnds.Command;
 import jshi.Jason.Improved_Bot.comamnds.CommandHelper;
+import jshi.Jason.Improved_Bot.comamnds.Help;
 import jshi.Jason.Improved_Bot.comamnds.Pong;
 import jshi.Jason.Improved_Bot.comamnds.Stop;
 import net.dv8tion.jda.api.JDA;
@@ -44,11 +46,17 @@ public class Main extends ListenerAdapter{
 		input.close();
 	}
 	
+	public String getPrefix()
+	{
+		return prefix;
+	}
+	
 	public void loadCommands()
 	{
 		cmdhelp.registerCommand(new Pong());
 		cmdhelp.registerCommand(new Stop());
 		cmdhelp.registerCommand(new Clear());
+		cmdhelp.registerCommand(new Help(cmdhelp));
 	}
 	
 	// Events
@@ -86,7 +94,7 @@ public class Main extends ListenerAdapter{
 		Command cmd = cmdhelp.getCommand(args[0].toLowerCase().substring(prefix.length()));
 		if(cmd == null)
 		{
-			message.getChannel().sendMessage("??????").queue();
+			message.addReaction("❌").queue();
 			return;
 		}
 		cmd.run(message, args);
