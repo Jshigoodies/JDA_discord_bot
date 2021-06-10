@@ -1,7 +1,9 @@
 package jshi.Jason.Improved_Bot.comamnds;
 
+import java.awt.Color;
 import java.util.List;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
 
 public class Clear implements Command{
@@ -21,9 +23,14 @@ public class Clear implements Command{
 	@Override
 	public void run(Message message, String[] args)
 	{
+		EmbedBuilder error = new EmbedBuilder();
 		if(args.length < 2)
 		{
-			message.getChannel().sendMessage("clear <number>").queue();
+			error.setTitle(":red_circle: clear <number>");
+			error.setColor(Color.RED);
+			message.getChannel().sendTyping().queue();
+			message.getChannel().sendMessage(error.build()).queue();
+			error.clear();
 			return;
 		}
 		else
@@ -37,8 +44,11 @@ public class Clear implements Command{
 			}
 			catch(Exception e)
 			{
-				message.getChannel().sendMessage("error").queue();
-				e.printStackTrace();
+				error.setTitle(":red_circle: Error unknown");
+				error.setColor(Color.RED);
+				message.getChannel().sendTyping().queue();
+				message.getChannel().sendMessage(error.build()).queue();
+				error.clear();
 			}
 		}
 	}

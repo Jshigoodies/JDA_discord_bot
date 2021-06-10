@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Scanner;
 import javax.security.auth.login.LoginException;
 
+import jshi.Jason.Improved_Bot.comamnds.Anime;
 import jshi.Jason.Improved_Bot.comamnds.Clear;
 import jshi.Jason.Improved_Bot.comamnds.Command;
 import jshi.Jason.Improved_Bot.comamnds.CommandHelper;
@@ -22,7 +23,7 @@ import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-public class Main extends ListenerAdapter{
+public class Main extends ListenerAdapter {
 	
 	public static JDA jda;
 	public static String prefix = "~";
@@ -57,6 +58,7 @@ public class Main extends ListenerAdapter{
 		cmdhelp.registerCommand(new Stop());
 		cmdhelp.registerCommand(new Clear());
 		cmdhelp.registerCommand(new Help(cmdhelp));
+		cmdhelp.registerCommand(new Anime());
 	}
 	
 	// Events
@@ -97,7 +99,12 @@ public class Main extends ListenerAdapter{
 			message.addReaction("❌").queue();
 			return;
 		}
-		cmd.run(message, args);
+		try {
+			cmd.run(message, args);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }
