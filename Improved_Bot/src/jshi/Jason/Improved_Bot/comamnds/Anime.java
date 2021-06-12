@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -44,17 +45,24 @@ public class Anime implements Command {
 			File f = new File("MyLiteralAnimeList.dat");
 			Scanner input = new Scanner(f);
 			EmbedBuilder list = new EmbedBuilder();
-			list.setTitle("Jshi's Anime List");
+			list.setTitle("Jshi's Anime List", "https://github.com/Jshigoodies");
 			list.setColor(Color.GREEN);
 			list.setDescription("Note that some of the manga are animes too");
 			list.setFooter("Made by jshi", "https://images7.alphacoders.com/112/thumb-1920-1126216.jpg");
 			
-			String wholeList = "";
+			ArrayList<String> wholeList = new ArrayList<String>();
+			String wholeWord = "";
+			
 			while(input.hasNext())
 			{
-				wholeList = wholeList + input.nextLine() + "\n";
+				wholeList.add(input.nextLine());
 			}
-			list.addField("My Anime List", wholeList, false);
+			Collections.sort(wholeList, String.CASE_INSENSITIVE_ORDER); //sort in alphabetical order
+			for(int i = 0; i<wholeList.size(); i++)
+			{
+				wholeWord = wholeWord + wholeList.get(i) + "\n";
+			}
+			list.addField("My Anime List", wholeWord, false);
 			message.getChannel().sendTyping().queue();
 			message.getChannel().sendMessage(list.build()).queue();
 		}
