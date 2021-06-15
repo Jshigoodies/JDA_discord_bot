@@ -1,7 +1,6 @@
 package jshi.Jason.Improved_Bot.comamnds;
 
 import net.dv8tion.jda.api.entities.Message;
-
 public class Stop implements Command{
 	
 	private String name;
@@ -19,7 +18,7 @@ public class Stop implements Command{
 	@Override
 	public void run(Message message, String args[])
 	{
-		message.getChannel().sendMessage("Shutting down").queue();
+		message.reply("Shutting Down").queue();
 		System.exit(0);
 	}
 }

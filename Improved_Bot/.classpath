@@ -7,6 +7,5 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/Jshi/Desktop/JDA_discord_bot/JDA-4.2.1_266-withDependencies.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Jshi/Desktop/WorkSpace/spigot-1.16.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,8 +1,14 @@
 package jshi.Jason.Improved_Bot.comamnds;
 
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -65,6 +71,38 @@ public class Anime implements Command {
 			list.addField("My Anime List", wholeWord, false);
 			message.getChannel().sendTyping().queue();
 			message.getChannel().sendMessage(list.build()).queue();
+		}
+		if(args.length == 4)
+		{
+			if(args[1].equalsIgnoreCase("jshi"))
+			{
+				//get the .dat file
+				if(args[2].equalsIgnoreCase("add"))
+				{
+					/*
+					 * add args[3] here
+					 */
+//					try {
+//						BufferedReader b = new BufferedReader(new FileReader("MyLiteralAnimeList.dat"));
+//						if(b.readLine() == null)
+//						{
+//							message.getChannel().sendMessage("File List is Empty").queue();
+//							FileWriter fw = new FileWriter("MyLiteralAnimeList.dat");
+//							fw.write(args[3]);
+//						}
+//						else
+//						{
+//							message.getChannel().sendMessage("File List is not Empty.... appending").queue();
+//							BufferedWriter bw = new BufferedWriter(new FileWriter("MyLiteralAnimeList.dat"));
+//							bw.write(args[3]);
+//						}
+//					}
+//					catch(IOException e)
+//					{
+//						e.printStackTrace();
+//					}
+				}
+			}
 		}
 	}
 	

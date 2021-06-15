@@ -77,7 +77,6 @@ public class Main extends ListenerAdapter {
 		String messageString = message.getContentRaw(); //whole string message if I ever need it
 		String[] args = messageString.split(" ");
 		
-		
 		/*
 		for(int i = 0; i <args.length; i++)
 		{
