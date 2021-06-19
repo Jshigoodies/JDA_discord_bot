@@ -83,7 +83,6 @@ public class Main extends ListenerAdapter {
 			System.out.println(args[i]);
 		}
 		*/
-		
 		if(author.isBot())
 		{
 			return;
