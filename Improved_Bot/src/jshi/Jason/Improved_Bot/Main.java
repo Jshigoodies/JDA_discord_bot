@@ -13,6 +13,7 @@ import jshi.Jason.Improved_Bot.comamnds.CommandHelper;
 import jshi.Jason.Improved_Bot.comamnds.Help;
 import jshi.Jason.Improved_Bot.comamnds.Pong;
 import jshi.Jason.Improved_Bot.comamnds.Stop;
+import jshi.Jason.Improved_Bot.comamnds.Testing;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -59,6 +60,7 @@ public class Main extends ListenerAdapter {
 		cmdhelp.registerCommand(new Clear());
 		cmdhelp.registerCommand(new Help(cmdhelp));
 		cmdhelp.registerCommand(new Anime());
+		cmdhelp.registerCommand(new Testing());
 	}
 	
 	// Events
