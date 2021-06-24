@@ -5,19 +5,28 @@ import java.util.List;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 
 public class Clear implements Command{
 	
 	private String name;
+	private String description;
 	
 	public Clear()
 	{
 		name = "clear";
+		description = "delete messages";
 	}
 	
 	@Override
 	public String getName() {
 		return name;
+	}
+	
+	@Override
+	public String getDescription()
+	{
+		return description;
 	}
 	
 	@Override
@@ -51,5 +60,11 @@ public class Clear implements Command{
 				error.clear();
 			}
 		}
+	}
+	
+	@Override
+	public void runSlash(SlashCommandEvent event)
+	{
+		
 	}
 }

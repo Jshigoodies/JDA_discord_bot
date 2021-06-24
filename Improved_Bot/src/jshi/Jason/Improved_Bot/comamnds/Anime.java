@@ -16,15 +16,19 @@ import java.util.Scanner;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
-
+import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
+//anime <author>
+//anime <author> add <name of anime>
 public class Anime implements Command {
 	private String name;
+	private String description;
 	private List<EmbedBuilder> mal; //potential use
 	private EmbedBuilder error_one;
 	private EmbedBuilder error_two;
 	public Anime()
 	{
 		name = "anime";
+		description = "getting an anime list - <command_prefix>anime <author>";
 		mal = new ArrayList<EmbedBuilder>();
 		
 		//Error 1
@@ -42,6 +46,12 @@ public class Anime implements Command {
 	public String getName()
 	{
 		return name;
+	}
+	
+	@Override
+	public String getDescription()
+	{
+		return description;
 	}
 	
 	@Override
@@ -126,8 +136,10 @@ public class Anime implements Command {
 		}
 	}
 	
+	@Override
+	public void runSlash(SlashCommandEvent event)
+	{
+		
+	}
 	
-	//Creating the whole list
-
-
 }
