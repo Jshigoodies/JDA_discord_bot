@@ -26,4 +26,5 @@ public interface Command { // what does a general command have?
 	{
 		
 	}
+	
 }

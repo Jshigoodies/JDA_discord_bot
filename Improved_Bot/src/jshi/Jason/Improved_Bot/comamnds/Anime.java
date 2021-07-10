@@ -87,9 +87,10 @@ public class Anime implements Command {
 				{
 					wholeWord = wholeWord + wholeList.get(i) + "\n";
 				}
-				list.addField("My Anime List", wholeWord, false);
+				//list.addField("My Anime List", wholeWord, false); //the list is too big. so this is pointless
+				//Value cannot be longer than 1024 characters. :c
 				message.getChannel().sendTyping().queue();
-				message.getChannel().sendMessage(list.build()).queue();
+				message.getChannel().sendMessage(wholeWord).queue();
 			}
 			else
 			{
