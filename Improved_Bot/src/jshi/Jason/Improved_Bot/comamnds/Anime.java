@@ -69,11 +69,11 @@ public class Anime implements Command {
 			{
 				File f = new File("MyLiteralAnimeList.txt");
 				Scanner input = new Scanner(f);
-				EmbedBuilder list = new EmbedBuilder();
-				list.setTitle("Jshi's Anime List", "https://github.com/Jshigoodies");
-				list.setColor(Color.GREEN);
-				list.setDescription("Note that some of the manga are animes too");
-				list.setFooter("Made by jshi", "https://images7.alphacoders.com/112/thumb-1920-1126216.jpg");
+//				EmbedBuilder list = new EmbedBuilder();
+//				list.setTitle("Jshi's Anime List", "https://github.com/Jshigoodies");
+//				list.setColor(Color.GREEN);
+//				list.setDescription("Note that some of the manga are animes too");
+//				list.setFooter("Made by jshi", "https://images7.alphacoders.com/112/thumb-1920-1126216.jpg");
 				
 				ArrayList<String> wholeList = new ArrayList<String>();
 				String wholeWord = "";
